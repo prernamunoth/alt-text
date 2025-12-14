@@ -1,11 +1,7 @@
-transformers
-torch
-pillow
-qwen-vl-utils
-streamlit
-torchvision
 accelerate
-rich
-pydantic
+pillow
 python-pptx>=0.6.21
-streamlit
+qwen-vl-utils
+torch
+torchvision
+transformers
