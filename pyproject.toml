@@ -1,0 +1,62 @@
+[build-system]
+requires = ["setuptools>=65.5.0", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "alt_text"
+version = "0.0.1"
+description = "My package description"
+readme = "README.md"
+requires-python = ">=3.9.0"
+keywords = ["Project keyword 1", "Project keyword 2"]
+license = { text = "BSD 3-Clause License" }
+classifiers = ["Programming Language :: Python :: 3"]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.txt"] }
+optional-dependencies = { dev = { file = [
+    "requirements-dev.txt",
+    "requirements-extras.txt",
+] } }
+
+[project.urls]
+"Homepage" = "https://github.com/collectorsgroup/aiml-project-template"
+
+[tool.setuptools]
+packages = ["alt_text"]
+
+
+[tool.vulture]
+paths = ["."]
+make_whitelist = true
+min_confidence = 80
+sort_by_size = true
+verbose = false
+ignore_names = ["cls"]
+
+[tool.isort]
+profile = "black"
+
+[tool.black]
+line-length = 88
+
+# Mypy config
+[tool.mypy]
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+
+[[tool.mypy.overrides]]
+module = "torchvision.*"
+ignore_missing_imports = true
+
+#https://coverage.readthedocs.io/en/latest/config.html
+[tool.coverage.run]
+# This is important to generate xml files without absolute paths
+relative_files = true
+branch = false
+
+[tool.coverage.report]
+show_missing = false
+skip_covered = false
