@@ -1,0 +1,5 @@
+click
+flask
+pydantic
+rich
+streamlit

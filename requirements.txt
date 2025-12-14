@@ -1,0 +1,7 @@
+accelerate
+pillow
+python-pptx>=0.6.21
+qwen-vl-utils
+torch
+torchvision
+transformers
