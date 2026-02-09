@@ -58,7 +58,9 @@ def check_alt_text(pptx_path: Union[str, Path], model: AltTextModel, progress_ca
                     image_path = None
                     try:
                         if hasattr(shape, 'image'):
-                            image_filename = f"slide{slide_number}_{shape.name}.png"
+                            # Use the actual image format extension from python-pptx
+                            ext = getattr(shape.image, 'ext', 'png') or 'png'
+                            image_filename = f"slide{slide_number}_{shape.name}.{ext}"
                             image_path = images_dir / image_filename
                             
                             with open(image_path, 'wb') as f:
